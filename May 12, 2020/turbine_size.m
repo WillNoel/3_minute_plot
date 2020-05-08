@@ -52,6 +52,7 @@ ylabel('Hub Height (m)','FontSize',10);
 title('Turbine Size by Year');
 clr = colorbar; ylabel(clr,'Rating (kW)');
 legend('Rotor Diameter (m)', 'location', 'northwest');
+legend boxoff;
 colormap(gray);
 
 
