@@ -49,9 +49,10 @@ diamtr     = diamtr(idx,:);
 scatter(year,height,diamtr*3,rating,'filled','MarkerEdgeColor','k');
 xlabel('Year','FontSize',10);
 ylabel('Hub Height (m)','FontSize',10);
-title('Canadian Turbine Size by Year');
+title('Turbine Size by Year');
 clr = colorbar; ylabel(clr,'Rating (kW)');
-colormap(jet);
+legend('Rotor Diameter (m)', 'location', 'northwest');
+colormap(gray);
 
 
 
