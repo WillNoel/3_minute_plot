@@ -24,7 +24,7 @@ function turbine_size
 % See also: N/A
 % Author: Will Noel
 % email: wnoel@ualberta.ca
-% May 2020; Last revision: 12-May-2020
+% May 2020; Last revision: 14-May-2020
 %------------- BEGIN CODE --------------
 
 % Read in .csv datafile, extract data, close table
@@ -68,7 +68,7 @@ xlabel('Year','FontSize',10);
 ylabel({'Capacity-Weighted';'Annual Average Hub Height (m)'},'FontSize',10);
 xlim([1990 2025]);
 ylim([0 200]);
-title('Average Size and Installed Capacity by Year');
+title('Capacity-Weighted Average Size and Total Installed Capacity by Year');
 % Window size
 set(gcf,'Position',[200 500 900 300]); % [xpos ypos width height]
 % Colorbar
