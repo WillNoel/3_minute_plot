@@ -56,13 +56,14 @@ stack = [on qc ab ns bc mb sk];
 %    x-axis = year
 %    y-axis = rating
 %    color  = province
-fig = area(year,stack,'EdgeColor','None');
+fig = area(year,stack/1000,'EdgeColor','None');
 xlabel('Year','FontSize',10);
-ylabel('Installed Capacity (MW)','FontSize',10);
+ylabel('Installed Capacity (GW)','FontSize',10);
 title('Cumulative Installed Wind Capacity');
 legend('Ontario','Quebec','Alberta','Nova Scotia','British Columbia',...
     'Manitoba','Saskatchewan','location','northwest');
 legend boxoff;
+xlim([1995 2020]);
 
 % Loop through and set colormap to greyscale
 clr = [6/7 6/7 6/7];
@@ -70,13 +71,3 @@ for i = 1:7
     fig(i).FaceColor = clr;
     clr = clr - 1/7;
 end
-
-
-
-
-
-
-
-
-
-
