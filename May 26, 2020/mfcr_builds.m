@@ -38,7 +38,7 @@ se     = data.Senvion;
 ot     = data.Other;
 clear data
 
-% Generate matrix for stacked area plotting
+% Generate matrix for stacked plotting
 stack = [ve ge si en se ot];
 label = categorical(prov);
 
@@ -48,8 +48,8 @@ label = categorical(prov);
 %    color  = manufacturer
 fig = bar(label,stack,'stacked','EdgeColor','None');
 xlabel('Province','FontSize',10);
-ylabel('Fraction of Installed Turbines','FontSize',10);
-title('Turbine Builds per Manufacturer');
+ylabel('Fraction of Installed Capacity','FontSize',10);
+title('Installed Capacity per Manufacturer');
 legend('Vestas','GE','Siemens','Enercon','Senvion',...
     'Other','location','eastoutside');
 legend boxoff;
@@ -60,5 +60,6 @@ clr = [5/6 5/6 5/6];
 for i = 1:6
     fig(i).FaceColor = clr;
     clr = clr - 1/6;
-end 
+end
+    
 
