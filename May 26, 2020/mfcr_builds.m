@@ -24,7 +24,7 @@ function mfcr_builds
 % See also: N/A
 % Author: Will Noel
 % email: wnoel@ualberta.ca
-% May 2020; Last revision: 08-May-2020
+% May 2020; Last revision: 21-May-2020
 %------------- BEGIN CODE --------------
 
 % Read in .csv datafile, extract data, close table
@@ -48,17 +48,17 @@ label = categorical(prov);
 %    color  = manufacturer
 fig = bar(label,stack,'stacked','EdgeColor','None');
 xlabel('Province','FontSize',10);
-ylabel('Installed Turbines','FontSize',10);
+ylabel('Fraction of Installed Turbines','FontSize',10);
 title('Turbine Builds per Manufacturer');
-legend('Vestas','General Electric','Siemens','Enercon','Senvion',...
-    'Other','location','northwest');
+legend('Vestas','GE','Siemens','Enercon','Senvion',...
+    'Other','location','eastoutside');
 legend boxoff;
+ylim([0 1]);
 
 % Loop through and set colormap to greyscale
 clr = [5/6 5/6 5/6];
 for i = 1:6
     fig(i).FaceColor = clr;
     clr = clr - 1/6;
-end
-    
+end 
 
