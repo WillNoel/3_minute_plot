@@ -60,8 +60,7 @@ fig = area(year,stack/1000,'EdgeColor','None');
 xlabel('Year','FontSize',10);
 ylabel('Installed Capacity (GW)','FontSize',10);
 title('Cumulative Installed Wind Capacity');
-legend('Ontario','Quebec','Alberta','Nova Scotia','British Columbia',...
-    'Manitoba','Saskatchewan','location','northwest');
+legend('ON','QC','AB','NS','BC','MB','SK','location','northwest');
 legend boxoff;
 xlim([1995 2020]);
 
