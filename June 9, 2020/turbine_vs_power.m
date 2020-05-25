@@ -96,7 +96,7 @@ QC_colr = [1 1 1];
 
 
 % y = 2x
-x = linspace(0,7);
+x = linspace(0,200);
 y = 2.*x;
 
 % Generate scatter plot:
@@ -104,18 +104,17 @@ y = 2.*x;
 %    y-axis = capacity density
 %    size   = constant
 %    color  = province
-scatter(AB_turb./AB_foot,AB_capc./AB_foot,[],'o','MarkerEdgeColor','k'); hold on
-scatter(BC_turb./BC_foot,BC_capc./BC_foot,[],'s','MarkerEdgeColor','k');
-scatter(MB_turb./MB_foot,MB_capc./MB_foot,[],'d','MarkerEdgeColor','k');
-scatter(NS_turb./NS_foot,NS_capc./NS_foot,[],'x','MarkerEdgeColor','k');
-scatter(ON_turb./ON_foot,ON_capc./ON_foot,[],'*','MarkerEdgeColor','k');
-scatter(QC_turb./QC_foot,QC_capc./QC_foot,[],'^','MarkerEdgeColor','k');
-scatter(SK_turb./SK_foot,SK_capc./SK_foot,[],'v','MarkerEdgeColor','k');
+scatter(AB_turb,AB_capc,[],'o','MarkerEdgeColor','k'); hold on
+scatter(BC_turb,BC_capc,[],'s','MarkerEdgeColor','k');
+scatter(MB_turb,MB_capc,[],'d','MarkerEdgeColor','k');
+scatter(NS_turb,NS_capc,[],'x','MarkerEdgeColor','k');
+scatter(ON_turb,ON_capc,[],'*','MarkerEdgeColor','k');
+scatter(QC_turb,QC_capc,[],'^','MarkerEdgeColor','k');
+scatter(SK_turb,SK_capc,[],'v','MarkerEdgeColor','k');
 plot(x,y,'k--');
-xlabel('Turbine Density (turbine/km^2)','FontSize',10);
-ylabel('Capacity Density (MW/km^2)','FontSize',10);
-ylim([0 10]);
-title('Turbine Density vs. Capacity Density');
+xlabel('Turbines per Farm','FontSize',10);
+ylabel('Capacity per Farm (MW)','FontSize',10);
+title('Turbines Installed vs. Capacity per Farm');
 legend('AB','BC','MB','NS','ON','QC','SK','y = 2x','location','northwest');
 legend boxoff
 
