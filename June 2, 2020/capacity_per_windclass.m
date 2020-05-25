@@ -128,4 +128,13 @@ legend boxoff;
 % Window size
 set(gcf,'Position',[200 200 900 600]); % [xpos ypos width height]
 
+% Label two of the bubbles for scale
+subplot(2,1,1)
+n1    = find(SK_yr==2001);
+lbl_1 = sprintf('%2.0f MW\n    \\downarrow',SK_capc(n1));
+text(2000.3,SK_clas(n1)+0.75,lbl_1);
+n2    = find(AB_yr==2014);
+lbl_2 = sprintf('%2.0f MW\n    \\downarrow',AB_capc(n2(2)));
+text(2013.3,AB_clas(n2(2))+1.25,lbl_2);
+
 
