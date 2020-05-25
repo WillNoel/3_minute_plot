@@ -39,9 +39,9 @@ clear data
 %    x-axis = capacity per farm
 %    y-axis = density
 %    color  = type of density
-scatter(capac,power./footp,[],[0 0 0],'Filled','MarkerEdgeColor','k'); hold on
-scatter(capac,turbn./footp,[],[0.5 0.5 0.5],'Filled','MarkerEdgeColor','k');
-scatter(capac,capac./footp,[],[1 1 1],'Filled','MarkerEdgeColor','k');
+scatter(capac,power./footp,[],[0 0 0],'o','Filled','MarkerEdgeColor','k'); hold on
+scatter(capac,turbn./footp,[],[0.5 0.5 0.5],'s','Filled','MarkerEdgeColor','k');
+scatter(capac,capac./footp,[],[1 1 1],'^','Filled','MarkerEdgeColor','k');
 legend('Power Density (MW/km^2)','Turbine Density (turbine/km^2)',...
     'Capacity Density (MW/km^2)');
 legend boxoff;
