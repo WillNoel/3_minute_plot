@@ -58,9 +58,9 @@ legend('Power Density (MW/km^2)','Capacity Denstiy (MW/km^2)',...
 legend boxoff
 
 % Loop through and set colormap to greyscale
-clr = [0.8 0.8 0.8];
+clr = [0.7 0.7 0.7];
 for i = 1:3
     fig(i).FaceColor = clr;
-    clr = clr - 0.4;
+    clr = clr - 0.35;
 end
 
