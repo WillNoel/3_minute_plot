@@ -45,9 +45,9 @@ inst_capac   = ones(n,1);
 for i = 1:1:n
     idx = find(year==unique_year(i));
     inst_capac(i) = sum(rating(idx));
-    % Capacity weighted averages
-    avg_height(i) = mean(rating(idx).'*height(idx))./inst_capac(i);
-    avg_diamtr(i) = mean(rating(idx).'*diamtr(idx))./inst_capac(i);
+    % Averages
+    avg_height(i) = mean(height(idx));
+    avg_diamtr(i) = mean(diamtr(idx));
 end
 
 % Flip vectors so smaller bubbles aren't hidden by larger ones
@@ -64,11 +64,11 @@ avg_diamtr  = flipud(avg_diamtr);
 h = scatter(unique_year,avg_height,1,inst_capac./1000,'Filled',...
     'MarkerEdgeColor','k');
 % Axes labels and limits
-xlabel('Year','FontSize',10);
-ylabel({'Capacity-Weighted';'Annual Average Hub Height (m)'},'FontSize',10);
+xlabel('Year');
+ylabel({'Annual Average Hub Height (m)'});
 xlim([1990 2025]);
 ylim([0 200]);
-title('Capacity-Weighted Average Size and Total Installed Capacity by Year');
+%title('Average Turbine Size and Total Installed Capacity by Year');
 % Window size
 set(gcf,'Position',[200 500 900 300]); % [xpos ypos width height]
 % Colorbar
