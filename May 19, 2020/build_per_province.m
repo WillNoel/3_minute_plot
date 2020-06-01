@@ -33,8 +33,11 @@ year   = data.Year;
 ab     = data.AB;
 bc     = data.BC;
 mb     = data.MB;
+nb     = data.NB;
+nl     = data.NL;
 ns     = data.NS;
 on     = data.ON;
+pei    = data.PEI;
 qc     = data.QC;
 sk     = data.SK;
 clear data
@@ -44,29 +47,36 @@ clear data
 ab         = ab(idx,:);
 bc         = bc(idx,:);
 mb         = mb(idx,:);
+nb         = nb(idx,:);
+nl         = nl(idx,:);
 ns         = ns(idx,:);
 on         = on(idx,:);
+pei        = pei(idx,:);
 qc         = qc(idx,:);
 sk         = sk(idx,:);
 
+% Combine provinces for brevity
+ac    = nl+nb+pei+ns;   % Atlantic Canada (maritimes)
+ep    = sk+mb;          % Eastern Praries
+
 % Generate matrix for stacked area plotting
-stack = [on qc ab ns bc mb sk];
+stack = [on qc ab ac bc ep];
 
 % Generate stacked area plot:
 %    x-axis = year
 %    y-axis = rating
 %    color  = province
 fig = area(year,stack/1000,'EdgeColor','None');
-xlabel('Year','FontSize',10);
-ylabel('Installed Capacity (GW)','FontSize',10);
-title('Cumulative Installed Wind Capacity');
-legend('ON','QC','AB','NS','BC','MB','SK','location','northwest');
+xlabel('Year');
+ylabel('Installed Capacity (GW)');
+%title('Cumulative Installed Wind Capacity');
+legend('ON','QC','AB','AC','BC','EP','location','northwest');
 legend boxoff;
 xlim([1995 2020]);
 
 % Loop through and set colormap to greyscale
-clr = [6/7 6/7 6/7];
-for i = 1:7
+clr = [5/6 5/6 5/6];
+for i = 1:6
     fig(i).FaceColor = clr;
-    clr = clr - 1/7;
+    clr = clr - 1/6;
 end
