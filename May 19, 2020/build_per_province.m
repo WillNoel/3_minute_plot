@@ -70,9 +70,9 @@ fig = area(year,stack/1000,'EdgeColor','None');
 xlabel('Year');
 ylabel('Installed Capacity (GW)');
 %title('Cumulative Installed Wind Capacity');
-legend('ON','QC','AB','AC','BC','EP','location','northwest');
+legend(fliplr(fig),'EP','BC','AC','AB','QC','ON','location','northwest');
 legend boxoff;
-xlim([1995 2020]);
+xlim([1998 2019]);
 
 % Loop through and set colormap to greyscale
 clr = [5/6 5/6 5/6];
