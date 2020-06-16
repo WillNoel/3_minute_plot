@@ -34,9 +34,17 @@ cp     = data.Capacity;
 clear data
 
 % Create boxplot
-boxplot(cp,yr);
+boxplot(cp,yr,'Colors','k','Symbol','k+'); hold on
 ylim([-25 375]);
 xlabel('Year');
 ylabel('Installed Capacity (MW)');
-set(gcf,'Position',[200 500 1000 300]); % [xpos ypos width height]
+set(gcf,'Position',[200 300 1000 300]); % [xpos ypos width height]
+
+% Plot 'dummy' variables for legend entry
+scatter(1,1,1,[0 0 0],'s');
+plot(1,1,'k-');
+plot(1,1,'k--');
+scatter(1,1,1,[0 0 0],'+');
+legend('IQR','Median','Min/Max','Outliers','Location','NorthWest');
+legend boxoff;
 
