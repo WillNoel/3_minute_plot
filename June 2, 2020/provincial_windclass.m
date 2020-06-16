@@ -36,30 +36,32 @@ cls3   = data.Class3;
 cls4   = data.Class4;
 cls5   = data.Class5;
 cls6   = data.Class6;
+cls7   = data.Class7;
 clear data
 
 % Generate matrix for stacked plotting
-stack = [cls1 cls2 cls3 cls4 cls5 cls6];
-label = categorical(prov);
+stack  = [cls1 cls2 cls3 cls4 cls5 cls6 cls7];
+label  = categorical(prov);
+label2 = reordercats(label,{'BC','AB','EP','ON','QC','AC'});
 
 % Generate stacked bar chart:
 %    x-axis = province
 %    y-axis = fraction of capacity
 %    color  = wind class
-fig = bar(label,stack,'stacked','EdgeColor','None');
-xlabel('Province','FontSize',10);
-ylabel('Fraction of Installed Capacity','FontSize',10);
-title('Provincial Installed Capacity per Wind Class');
-lgn = legend('1','2','3','4','5','6','location','eastoutside');
+fig = bar(label2,stack,'stacked','EdgeColor','None');
+xlabel('Province');
+ylabel('Fraction of Installed Capacity');
+%title('Provincial Installed Capacity per Wind Class');
+lgn = legend('1','2','3','4','5','6','7','location','eastoutside');
 legend boxoff;
 lgn.Title.String = 'Wind Class';
 ylim([0 1]);
 
 % Loop through and set colormap to greyscale
-clr = [5/6 5/6 5/6];
-for i = 1:6
+clr = [6/7 6/7 6/7];
+for i = 1:7
     fig(i).FaceColor = clr;
-    clr = clr - 1/6;
+    clr = clr - 1/7;
 end
    
 
