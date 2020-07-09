@@ -24,7 +24,7 @@ function mfcr_builds
 % See also: N/A
 % Author: Will Noel
 % email: wnoel@ualberta.ca
-% May 2020; Last revision: 09-June-2020
+% May 2020; Last revision: 09-July-2020
 %------------- BEGIN CODE --------------
 
 % Read in .csv datafile, extract data, close table
@@ -48,71 +48,100 @@ AC_idx  = find(contains(prov,'AC'));
 EP_idx  = find(contains(prov,'EP'));
 
 % Generate stacks for plotting
-vest_stack = [vestas(ON_idx) vestas(QC_idx) vestas(AB_idx) ...
-    vestas(AC_idx) vestas(BC_idx) vestas(EP_idx)];
+vest_stack = [vestas(AC_idx) vestas(QC_idx) vestas(ON_idx) ...
+    vestas(EP_idx) vestas(AB_idx) vestas(BC_idx)];
 
-ge_stack   = [ge(ON_idx) ge(QC_idx) ge(AB_idx) ...
-    ge(AC_idx) ge(BC_idx) ge(EP_idx)];
+ge_stack   = [ge(AC_idx) ge(QC_idx) ge(ON_idx) ...
+    ge(EP_idx) ge(AB_idx) ge(BC_idx)];
 
-siem_stack = [siemens(ON_idx) siemens(QC_idx) siemens(AB_idx) ...
-    siemens(AC_idx) siemens(BC_idx) siemens(EP_idx)];
+siem_stack = [siemens(AC_idx) siemens(QC_idx) siemens(ON_idx) ...
+    siemens(EP_idx) siemens(AB_idx) siemens(BC_idx)];
 
-ener_stack = [enercon(ON_idx) enercon(QC_idx) enercon(AB_idx) ...
-    enercon(AC_idx) enercon(BC_idx) enercon(EP_idx)];
+ener_stack = [enercon(AC_idx) enercon(QC_idx) enercon(ON_idx) ...
+    enercon(EP_idx) enercon(AB_idx) enercon(BC_idx)];
 
-senv_stack = [senvion(ON_idx) senvion(QC_idx) senvion(AB_idx) ...
-    senvion(AC_idx) senvion(BC_idx) senvion(EP_idx)];
+senv_stack = [senvion(AC_idx) senvion(QC_idx) senvion(ON_idx) ...
+    senvion(EP_idx) senvion(AB_idx) senvion(BC_idx)];
 
-othr_stack = [other(ON_idx) other(QC_idx) other(AB_idx) ...
-    other(AC_idx) other(BC_idx) other(EP_idx)];
+% othr_stack = [other(AC_idx) other(QC_idx) other(ON_idx) ...
+%     other(EP_idx) other(AB_idx) other(BC_idx)];
 
 % Generate stacked area plot:
 %    x-axis = year
 %    y-axis = rating
 %    color  = province
 
-subplot(3,2,1);
-fig1 = area(yr(1:25),vest_stack,'EdgeColor','None');
-title('Vestas');
-xlim([1998 2019]);
-ylim([0 4000]);
-ylabel('Installed Capacity (MW)');
+set(groot,'DefaultAxesTickLabelInterpreter','latex');
 
-subplot(3,2,2);
-fig2 = area(yr(1:25),ge_stack,'EdgeColor','None');
-title('GE');
+ax1 = subplot(3,2,1);
+fig1 = area(yr(1:25),vest_stack,'EdgeColor','w','LineWidth',0.25);
+set(ax1,'FontSize',11);
+title('Vestas','Interpreter','latex','FontSize',12);
 xlim([1998 2019]);
 ylim([0 4000]);
+xticks([1999 2004 2009 2014 2019]);
+yticks([0 1000 2000 3000 4000]);
+yticklabels({0 [] 2000 [] 4000})
+ylabel('Installed Capacity (MW)','Interpreter','latex','FontSize',12);
 
-subplot(3,2,3);
-fig3 = area(yr(1:25),siem_stack,'EdgeColor','None');
-title('Siemens');
+ax2 = subplot(3,2,2);
+fig2 = area(yr(1:25),ge_stack,'EdgeColor','w','LineWidth',0.25);
+set(ax2,'FontSize',11);
+title('GE','Interpreter','latex','FontSize',12);
 xlim([1998 2019]);
 ylim([0 4000]);
-ylabel('Installed Capacity (MW)');
+xticks([1999 2004 2009 2014 2019]);
+yticks([0 1000 2000 3000 4000]);
+yticklabels({0 [] 2000 [] 4000})
 
-subplot(3,2,4);
-fig4 = area(yr(1:25),ener_stack,'EdgeColor','None');
-title('ENERCON');
+ax3 = subplot(3,2,3);
+fig3 = area(yr(1:25),siem_stack,'EdgeColor','w','LineWidth',0.25);
+set(ax3,'FontSize',11);
+title('Siemens','Interpreter','latex','FontSize',12);
 xlim([1998 2019]);
 ylim([0 4000]);
+xticks([1999 2004 2009 2014 2019]);
+yticks([0 1000 2000 3000 4000]);
+yticklabels({0 [] 2000 [] 4000})
+ylabel('Installed Capacity (MW)','Interpreter','latex','FontSize',12);
 
-subplot(3,2,5);
-fig5 = area(yr(1:25),senv_stack,'EdgeColor','None');
-title('Senvion');
+ax4 = subplot(3,2,4);
+fig4 = area(yr(1:25),ener_stack,'EdgeColor','w','LineWidth',0.25);
+set(ax4,'FontSize',11);
+title('ENERCON','Interpreter','latex','FontSize',12);
+xlabel('Year','Interpreter','latex','FontSize',12);
 xlim([1998 2019]);
 ylim([0 4000]);
-xlabel('Year');
-ylabel('Installed Capacity (MW)');
-legend(fliplr(fig5),'EP','BC','AC','AB','QC','ON','Location','NorthWest');
+yticks([0 1000 2000 3000 4000]);
+yticklabels({0 [] 2000 [] 4000})
+xticks([1999 2004 2009 2014 2019]);
+
+ax5 = subplot(3,2,5);
+fig5 = area(yr(1:25),senv_stack,'EdgeColor','w','LineWidth',0.25);
+set(ax5,'FontSize',11);
+title('Senvion','Interpreter','latex','FontSize',12);
+xlim([1998 2019]);
+ylim([0 4000]);
+xticks([1999 2004 2009 2014 2019]);
+yticks([0 1000 2000 3000 4000]);
+yticklabels({0 [] 2000 [] 4000})
+xlabel('Year','Interpreter','latex','FontSize',12);
+ylabel('Installed Capacity (MW)','Interpreter','latex','FontSize',12);
+legend(fliplr(fig5),'BC','AB','EP','ON','QC','AC',...
+    'Location','NorthWest','Interpreter','latex','FontSize',11,...
+    'NumColumns',2,'Orientation','horizontal','Position',...
+    [0.6383 0.1791 0.2033 0.086]);
 legend boxoff;
 
-subplot(3,2,6);
-fig6 = area(yr(1:25),othr_stack,'Edgecolor','None');
-title('Other');
-xlim([1998 2019]);
-ylim([0 4000]);
-xlabel('Year');
+% subplot(3,2,6);
+% fig6 = area(yr(1:25),othr_stack,'Edgecolor','w','LineWidth',0.25);
+% title('Other','Interpreter','latex','FontSize',12);
+% xlim([1998 2019]);
+% ylim([0 4000]);
+% xticks([1999 2004 2009 2014 2019]);
+% yticks([0 1000 2000 3000 4000]);
+% yticklabels({0 [] 2000 [] 4000})
+% xlabel('Year','Interpreter','latex','FontSize',12);
 
 % Loop through and set colormap to greyscale
 clr = [5/6 5/6 5/6];
@@ -122,9 +151,9 @@ for i = 1:6
     fig3(i).FaceColor = clr;
     fig4(i).FaceColor = clr;
     fig5(i).FaceColor = clr;
-    fig6(i).FaceColor = clr;
+%     fig6(i).FaceColor = clr;
     clr = clr - 1/6;
 end
 
 % Window size
-set(gcf,'Position',[300 200 750 600]); % [xpos ypos width height]
+set(gcf,'Units','inches','Position',[1 1 7.5 7]); % [xpos ypos width height]
