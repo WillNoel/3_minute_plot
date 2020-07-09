@@ -24,7 +24,7 @@ function capacity_per_windclass
 % See also: N/A
 % Author: Will Noel
 % email: wnoel@ualberta.ca
-% May 2020; Last revision: 22-May-2020
+% June 2020; Last revision: 09-July-2020
 %------------- BEGIN CODE --------------
 
 % Read in .csv datafile, extract data, close table
@@ -135,8 +135,8 @@ set(ax1,'FontSize',11);
 ylabel('Wind Class','Interpreter','latex','FontSize',12);
 xlim([1998 2020]);
 ylim([0 7]);
+xticks([1999 2004 2009 2014 2019]);
 yticks([1 2 3 4 5 6 7]);
-yticklabels({'1' '2' '3' '4' '5' '6' '7'});
 %title('Annual Installed Capacity by Wind Class and Province');
 legend('BC','AB','EP','location','eastoutside','Interpreter','latex',...
     'FontSize',11);
@@ -153,8 +153,8 @@ xlabel('Year','Interpreter','latex','FontSize',12);
 ylabel('Wind Class','Interpreter','latex','FontSize',12);
 xlim([1998 2020]);
 ylim([0 7]);
+xticks([1999 2004 2009 2014 2019]);
 yticks([1 2 3 4 5 6 7]);
-yticklabels({'1' '2' '3' '4' '5' '6' '7'});
 legend('ON','QC','AC','location','eastoutside','Interpreter','latex',...
     'FontSize',11);
 legend boxoff;
