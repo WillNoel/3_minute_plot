@@ -126,41 +126,52 @@ QC_colr = [1/2 1/2 1/2];
 %    color  = province
 
 % BC + Prarie Provinces
-subplot(2,1,1);
+ax1 = subplot(2,1,1);
 scatter(BC_yr,BC_clas,BC_capc*2,BC_colr,'o','Filled','MarkerEdgeColor','k'); hold on
 scatter(AB_yr,AB_clas,AB_capc*2,AB_colr,'o','Filled','MarkerEdgeColor','k'); 
 scatter(EP_yr,EP_clas,EP_capc*2,EP_colr,'o','Filled','MarkerEdgeColor','k');
 % Axes labels and limits
-ylabel('Wind Class');
+set(ax1,'FontSize',11);
+ylabel('Wind Class','Interpreter','latex','FontSize',12);
 xlim([1998 2020]);
 ylim([0 7]);
+yticks([1 2 3 4 5 6 7]);
+yticklabels({'1' '2' '3' '4' '5' '6' '7'});
 %title('Annual Installed Capacity by Wind Class and Province');
-legend('BC','AB','EP','location','eastoutside');
+legend('BC','AB','EP','location','eastoutside','Interpreter','latex',...
+    'FontSize',11);
 legend boxoff;
 
 % Eastern Provinces
-subplot(2,1,2);
+ax2 = subplot(2,1,2);
 scatter(ON_yr,ON_clas,ON_capc*2,ON_colr,'o','Filled','MarkerEdgeColor','k'); hold on
 scatter(QC_yr,QC_clas,QC_capc*2,QC_colr,'o','Filled','MarkerEdgeColor','k');
 scatter(AC_yr,AC_clas,AC_capc*2,AC_colr,'o','Filled','MarkerEdgeColor','k'); 
 % Axes labels and limits
-xlabel('Year');
-ylabel('Wind Class');
+set(ax2,'FontSize',11);
+xlabel('Year','Interpreter','latex','FontSize',12);
+ylabel('Wind Class','Interpreter','latex','FontSize',12);
 xlim([1998 2020]);
 ylim([0 7]);
-legend('ON','QC','AC','location','eastoutside');
+yticks([1 2 3 4 5 6 7]);
+yticklabels({'1' '2' '3' '4' '5' '6' '7'});
+legend('ON','QC','AC','location','eastoutside','Interpreter','latex',...
+    'FontSize',11);
 legend boxoff;
 
 % Window size
-set(gcf,'Position',[200 200 900 600]); % [xpos ypos width height]
+set(gcf,'Units','inches','Position',[1 1 7.5 5]); % [xpos ypos width height]
 
 % Label two of the bubbles for scale
 subplot(2,1,1)
+set(gcf,'DefaultTextInterpreter','latex');
 n1    = find(SK_yr==2001);
-lbl_1 = sprintf('%2.0f MW\n    \\downarrow',SK_capc(n1));
-text(2000.3,SK_clas(n1)+0.75,lbl_1);
+lbl_1 = sprintf('%2.0f MW\n',SK_capc(n1));
+text(2001,SK_clas(n1)+0.8,[lbl_1 '$\downarrow$'],...
+    'HorizontalAlignment','Center','FontSize',11);
 n2    = find(AB_yr==2014);
-lbl_2 = sprintf('%2.0f MW\n    \\downarrow',AB_capc(n2(1)));
-text(2013.3,AB_clas(n2(1))+1.25,lbl_2);
+lbl_2 = sprintf('%2.0f MW\n',AB_capc(n2(1)));
+text(2014,AB_clas(n2(1))+1.3,[lbl_2 '$\downarrow$'],...
+    'HorizontalAlignment','Center','FontSize',11);
 
 
