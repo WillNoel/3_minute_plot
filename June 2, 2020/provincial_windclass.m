@@ -49,12 +49,17 @@ label2 = reordercats(label,{'BC','AB','EP','ON','QC','AC'});
 %    y-axis = fraction of capacity
 %    color  = wind class
 fig = bar(label2,stack,'stacked','EdgeColor','None');
-xlabel('Province');
-ylabel('Fraction of Installed Capacity');
+set(gca,'FontSize',11);
+xlabel('Province','Interpreter','latex','FontSize',12);
+ylabel('Fraction of Installed Capacity','Interpreter','latex',...
+    'FontSize',12);
 %title('Provincial Installed Capacity per Wind Class');
-lgn = legend('1','2','3','4','5','6','7','location','eastoutside');
+lgn = legend(fliplr(fig),'7: (8.9 - 11.9 m/s)','6: (8.1 - 8.8 m/s)',...
+    '5: (7.6 - 8.0 m/s)','4: (7.1 - 7.5 m/s)','3: (6.5 - 7.0 m/s)',...
+        '2: (5.7 - 6.4 m/s)','1: ($\leq$5.6 m/s)',...
+    'location','eastoutside','Interpreter','latex','FontSize',11);
 legend boxoff;
-lgn.Title.String = 'Wind Class';
+lgn.Title.String = {'Wind Class' '(Average Speed @ 50 m)'};
 ylim([0 1]);
 
 % Loop through and set colormap to greyscale
@@ -63,5 +68,8 @@ for i = 1:7
     fig(i).FaceColor = clr;
     clr = clr - 1/7;
 end
+
+% Window Size
+set(gcf,'Units','inches','Position',[1 1 6.5 4]); % [xpos ypos width height]
    
 
